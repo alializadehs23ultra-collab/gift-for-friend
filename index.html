@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>روز دختر مبارک نفسم ❤️</title>
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Vazirmatn', sans-serif; }
+    body {
+      background: radial-gradient(circle at 50% 10%, #2b1055 0%, #0d0818 100%);
+      min-height: 100vh; display: flex; justify-content: center; align-items: center;
+      padding: 20px 14px; overflow-x: hidden; color: #fff;
+    }
+    .gift-card {
+      background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.18); border-radius: 28px; width: 100%; max-width: 380px;
+      padding: 22px; text-align: center; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75); position: relative; z-index: 10;
+    }
+    .photo-box { width: 100%; height: 250px; border-radius: 20px; overflow: hidden; margin-bottom: 18px; border: 1.5px solid rgba(255, 255, 255, 0.2); }
+    .photo-box img { width: 100%; height: 100%; object-fit: cover; }
+    .badge { display: inline-block; background: linear-gradient(135deg, #ff416c, #ff4b2b); color: #fff; font-size: 0.8rem; font-weight: 700; padding: 5px 16px; border-radius: 50px; margin-bottom: 12px; }
+    h1 { font-size: 1.5rem; font-weight: 900; margin-bottom: 12px; color: #ff9ebb; }
+    .message { font-size: 0.95rem; color: #e6e6e6; line-height: 1.85; margin-bottom: 22px; min-height: 55px; }
+    .music-widget { background: rgba(255, 255, 255, 0.08); border-radius: 20px; padding: 12px 18px; display: flex; align-items: center; justify-content: space-between; border: 1px solid rgba(255, 255, 255, 0.12); }
+    .track-info { display: flex; align-items: center; gap: 12px; text-align: right; }
+    .vinyl { width: 44px; height: 44px; border-radius: 50%; background: #222; border: 2px solid #ff4b72; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+    .spinning { animation: rotateDisc 3s linear infinite; }
+    @keyframes rotateDisc { 100% { transform: rotate(360deg); } }
+    .play-btn { background: linear-gradient(135deg, #ff416c, #ff4b2b); border: none; width: 44px; height: 44px; border-radius: 50%; color: white; font-size: 1.1rem; cursor: pointer; }
+    .particle { position: fixed; bottom: -40px; pointer-events: none; z-index: 1; animation: floatUp 6s linear infinite; }
+    @keyframes floatUp { 0% { transform: translateY(0); opacity: 0; } 50% { opacity: 0.8; } 100% { transform: translateY(-115vh); opacity: 0; } }
+  </style>
+</head>
+<body>
+  <div class="gift-card">
+    <div class="photo-box">
+      <img src="https://images.unsplash.com/photo-1494774157365-9e04c6720e47?q=80&w=900&auto=format&fit=crop" alt="Romantic Couple">
+    </div>
+    <span class="badge">🌹 فقط برای تو</span>
+    <h1>روز دختر مبارک نفسم ✨</h1>
+    <div class="message" id="typewriter"></div>
+    <div class="music-widget">
+      <div class="track-info">
+        <div class="vinyl" id="vinylDisc">🎶</div>
+        <div>
+          <div style="font-size: 0.9rem; font-weight: bold;">Romantic Piano Vibe</div>
+          <div style="font-size: 0.75rem; color: #bbb;">Our Love Story</div>
+        </div>
+      </div>
+      <button class="play-btn" id="playBtn" onclick="togglePlay()">▶</button>
+    </div>
+  </div>
+  <audio id="romanticTrack" loop preload="auto">
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=romantic-piano-10651.mp3" type="audio/mpeg">
+  </audio>
+  <script>
+    const text = "کنار تو قشنگ‌ترین حس دنیارو تجربه می‌کنم... مرسی که با بودنت دنیامو رنگی‌تر کردی. روزت مبارک باشه زیباترین فرشته من! ❤️✨";
+    let i = 0;
+    function typeEffect() {
+      if (i < text.length) {
+        document.getElementById("typewriter").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeEffect, 40);
+      }
+    }
+    window.onload = typeEffect;
+    const audio = document.getElementById('romanticTrack');
+    const playBtn = document.getElementById('playBtn');
+    const vinyl = document.getElementById('vinylDisc');
+    function togglePlay() {
+      if (audio.paused) {
+        audio.play().then(() => { playBtn.innerHTML = "❚❚"; vinyl.classList.add('spinning'); });
+      } else {
+        audio.pause(); playBtn.innerHTML = "▶"; vinyl.classList.remove('spinning');
+      }
+    }
+    const hearts = ['❤️', '💖', '✨', '🌹'];
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.className = 'particle';
+      heart.innerText = hearts[Math.floor(Math.random() * hearts.length)];
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.fontSize = Math.random() * 14 + 14 + 'px';
+      heart.style.animationDuration = Math.random() * 3 + 4 + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }, 450);
+  </script>
+</body>
+</html>
